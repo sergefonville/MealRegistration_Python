@@ -8,10 +8,26 @@
       name: '',
       unit: $scope.units[0],
       amount: '',
-      kcal: '',
+      kcalUnit: '',
+      carbsUnit: '',
+      kcals: '',
       carbs: ''
     };
     $scope.foodItems.push(foodItem);
+    $scope.recalculate = function() {
+      if($scope.amount > 0 && $scope.kcalUnit > 0 && $scope.carbsUnit > 0) {
+        switch($scope.unit) {
+          case 'Grams':
+            $scope.kcal = $scope.amount * $scope.kcalsUnit / 100;
+            $scope.carbs = $scope.amount * $scope.carbsUnit / 100;
+            break;
+          case 'Portions':
+            $scope.kcal = $scope.amount * $scope.kcalsUnit;
+            $scope.carbs = $scope.amount * $scope.carbsUnit;
+            break;
+        }
+      }
+    }
   };
   $scope.removeFoodItem = function(foodItem) {
     var foodItemIndex =  $scope.foodItems.indexOf(foodItem);

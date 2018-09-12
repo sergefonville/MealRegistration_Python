@@ -2,7 +2,7 @@
 <button ng-click="addFoodItem()">Add Food Item</button>
 <table>
   <tr>
-    <th>Name</th><th>Unit</th><th>Amount</th><th>Kcal/unit</th><th>Carbs/unit</th><th>Delete</th>
+    <th>Name</th><th>Unit</th><th>Amount</th><th>Kcal/unit</th><th>Carbs/unit</th><th>Kcal</th><th>Carbs</th><th>Delete</th>
   </tr>
   <tr ng-repeat="foodItem in foodItems">
     <td><input type="text" /></td>
@@ -10,8 +10,9 @@
       <select ng-model="foodItem.unit" ng-options="unit for unit in units"></select>
     </td>
     <td><input ng-model="foodItem.amount" /></td>
-    <td><input ng-model="foodItem.kcal" type="text" /></td>
-    <td><input ng-model="foodItem.carbs" type="text" /></td>
+    <td><input ng-model="foodItem.kcalUnit" type="text" /></td>
+    <td><input ng-model="foodItem.carbsUnit" type="text" /></td>
+    <td><span ng-model="foodItem.kcal"></span><span></td>
+    <td><span ng-model="foodItem.carbs"></span><span></td>
     <td><button class="btn btn-default" ng-click="removeFoodItem(foodItem)"><span class="oi oi-trash"></span></button></td>
-  </tr>
 </table>
