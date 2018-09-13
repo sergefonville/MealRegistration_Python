@@ -10,5 +10,5 @@ The features that are to be implemented:
 
 # Prerequisites
 * Python 3.7
-* Bottle
-* SQL alchemy for bottle
+* Flask
+* SQLAlchemy for Flask

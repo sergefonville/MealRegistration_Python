@@ -1,24 +1,6 @@
+import sys
 import os
-# Change working directory so relative paths (and template lookup) work again
-os.chdir(os.path.dirname(__file__))
+sys.path.insert(0, os.path.dirname(__file__))
 
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-
-@route('/')
-def home():
-  return static_file('index.html', root='.')
-	
-@route('/css/<filepath:path>')
-def css(filepath):
-  return static_file(filepath, root='./css')
-
-@route('/templates/<filepath:path>')
-def template(filepath):
-  return static_file(filepath, root='./templates')
-  
-@route('/scripts/<filepath:path>')
-def template(filepath):
-  return static_file(filepath, root='./scripts')
-  
-application = default_app()
+from MealRegistration import app as application
+application.secret_key = '_XR/(!I"BvsRc+*.gPRs(<yD7K99Z!K:H2,//&%"=O5cL<K9j80O^GhnliI>a/_G'
