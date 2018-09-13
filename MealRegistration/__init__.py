@@ -1,7 +1,9 @@
 import os
 from flask import Flask, send_from_directory
+from database import db_session
 applicationDirectory = os.path.dirname(__file__)
 application = Flask(__name__)
+db = db_session(application)
 
 @application.route("/")
 def home():
