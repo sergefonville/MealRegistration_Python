@@ -1,9 +1,10 @@
 import os
 from flask import Flask, send_from_directory
-from database import db_session
+from MealRegistration.database import db_session
+from flask_sqlalchemy  import SQLAlchemy
 applicationDirectory = os.path.dirname(__file__)
 application = Flask(__name__)
-db = db_session(application)
+db = SQLAlchemy(application)
 
 @application.route("/")
 def home():
