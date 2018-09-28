@@ -1,6 +1,11 @@
 import sys
 import os
-sys.path.insert(0, os.path.dirname(__file__))
+from flask import Flask
+from shared.database import db
+from config import Config
+from main.controllers import main
 
-from MealRegistration import application
-application.secret_key = '_XR/(!I"BvsRc+*.gPRs(<yD7K99Z!K:H2,//&%"=O5cL<K9j80O^GhnliI>a/_G'
+app = Flask(__name__)
+app.config.from_object(Config)
+app.register_blueprint(main)
+db.init_app(app)
