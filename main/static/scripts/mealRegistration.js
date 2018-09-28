@@ -3,19 +3,19 @@
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: 'templates/main.template.html'
+      templateUrl: 'views/main.html'
     })
     .when('/add', {
-      templateUrl: 'templates/add.template.html'
+      templateUrl: 'views/add.html'
     })
     .when('/show', {
-      templateUrl: 'templates/show.template.html'
+      templateUrl: 'views/show.html'
     })
     .when('/list', {
-      templateUrl: 'templates/list.template.html'
+      templateUrl: 'views/list.html'
     })
     .when('/edit', {
-      templateUrl: 'templates/edit.template.html'
+      templateUrl: 'views/edit.html'
     });
   // This needs to be done as a function call, as a parameter to html5Mode does not work.
   $locationProvider.hashPrefix('');
