@@ -1,10 +1,16 @@
 import sys
 import os
 from flask import Flask
-from shared.database import db
-from config import Config
-from main.controllers import main
-from api.controllers import api
+from importlib import import_module
+
+
+workingDirectory = os.path.abspath(os.path.dirname(__file__))
+sys.path.insert(0, workingDirectory)
+
+db = import_module('shared.database', f'{workingDirectory}/shared').db
+Config = import_module('config', f'{workingDirectory}/config').Config
+main = import_module('main.controllers', f'{workingDirectory}/main').main
+api = import_module('api.controllers', f'{workingDirectory}/api').api
 
 
 app = Flask(__name__)
