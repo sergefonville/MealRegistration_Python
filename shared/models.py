@@ -19,14 +19,12 @@ class FoodItem(db.Model):
     def unit(self):
         return Unit.query(Unit.name).\
             filter_by(id=self.unit_id).\
-            first().\
             scalar()
 
     @unit.setter
     def unit(self, value):
         self.unit_id = Unit.query(Unit.id).\
             filter_by(name=value).\
-            first().\
             scalar()
 
 
