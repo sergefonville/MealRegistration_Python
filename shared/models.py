@@ -15,6 +15,20 @@ class FoodItem(db.Model):
     calories_per_unit = db.Column(db.Integer, nullable=False)
     mealparts = db.relationship('MealPart')
 
+    @property
+    def unit(self):
+        return Unit.query(Unit.name).\
+            filter_by(id=self.unit_id).\
+            first().\
+            scalar()
+
+    @unit.setter
+    def unit(self, value):
+        self.unit_id = Unit.query(Unit.id).\
+            filter_by(name=value).\
+            first().\
+            scalar()
+
 
 class MealPart(db.Model):
     id = db.Column(db.Integer, primary_key=True)
