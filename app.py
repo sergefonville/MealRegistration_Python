@@ -6,11 +6,15 @@ from importlib import import_module
 
 workingDirectory = os.path.abspath(os.path.dirname(__file__))
 sys.path.insert(0, workingDirectory)
+sharedPackage = f'{workingDirectory}/shared'
+configPackage = f'{workingDirectory}/config'
+mainPackage = f'{workingDirectory}/main'
+apiPackage = f'{workingDirectory}/api'
 
-db = import_module('shared.database', f'{workingDirectory}/shared').db
-Config = import_module('config', f'{workingDirectory}/config').Config
-main = import_module('main.controllers', f'{workingDirectory}/main').main
-api = import_module('api.controllers', f'{workingDirectory}/api').api
+db = import_module('shared', package=sharedPackage).db
+Config = import_module('config', package=configPackage).Config
+main = import_module('main', package=mainPackage).main
+api = import_module('api', package=apiPackage).api
 
 
 app = Flask(__name__)
