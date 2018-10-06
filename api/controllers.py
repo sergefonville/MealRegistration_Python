@@ -18,7 +18,7 @@ def updateMeal():
 
 @api.route("/meal/search")
 def searchMeal():
-    q = request.args.get('q',)
+    q = request.args.get('q', )
     meals = Meal.query.first()
     return jsonify(meals)
 
@@ -34,10 +34,7 @@ def searchFoodItem():
 def addFoodItem():
     fooditem = FoodItem()
     unit = Unit.query(Unit.name).filter_by(
-        Unit.name.like(
-            f"%{request.args.get('unit')}%"
-        )
-    ).scalar()
+        Unit.name.like(f"%{request.args.get('unit')}%")).scalar()
     if unit is None:
         unit = Unit()
         unit.name = request.args.get('unit')
@@ -47,8 +44,7 @@ def addFoodItem():
     fooditem.name = request.args.get('name')
     fooditem.calories_per_unit = request.args.get('calories_per_unit')
     fooditem.carbohydrates_per_unit = request.args.get(
-        'carbohydrates_per_unit'
-    )
+        'carbohydrates_per_unit')
     fooditem.unit = unit
 
 

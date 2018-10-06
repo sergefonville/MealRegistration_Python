@@ -32,10 +32,7 @@ class MealPart(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     meal_id = db.Column(db.Integer, db.ForeignKey('meal.id'), nullable=False)
     fooditem_id = db.Column(
-        db.Integer,
-        db.ForeignKey('food_item.id'),
-        nullable=False
-    )
+        db.Integer, db.ForeignKey('food_item.id'), nullable=False)
     amount = db.Column(db.Integer, nullable=False)
 
 

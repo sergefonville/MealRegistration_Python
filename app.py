@@ -3,7 +3,6 @@ import os
 from flask import Flask
 from importlib import import_module
 
-
 workingDirectory = os.path.abspath(os.path.dirname(__file__))
 sys.path.insert(0, workingDirectory)
 sharedPackage = f'{workingDirectory}/shared'
@@ -15,7 +14,6 @@ db = import_module('shared', package=sharedPackage).db
 Config = import_module('config', package=configPackage).Config
 main = import_module('main', package=mainPackage).main
 api = import_module('api', package=apiPackage).api
-
 
 app = Flask(__name__)
 app.config.from_object(Config)
