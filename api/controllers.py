@@ -3,34 +3,34 @@ from flask import jsonify
 from shared.database import db
 from shared.models import Meal, FoodItem, Unit
 
-api = Blueprint('api', __name__, url_prefix='/api')
+blueprint = Blueprint('api', __name__, url_prefix='/api')
 
 
-@api.route("/meal/add", methods=['PUT'])
+@blueprint.route("/meal/add", methods=['PUT'])
 def addMeal():
     pass
 
 
-@api.route("/meal/update", methods=['POST'])
+@blueprint.route("/meal/update", methods=['POST'])
 def updateMeal():
     pass
 
 
-@api.route("/meal/search")
+@blueprint.route("/meal/search")
 def searchMeal():
     q = request.args.get('q', )
     meals = Meal.query.first()
     return jsonify(meals)
 
 
-@api.route("/fooditem/search")
+@blueprint.route("/fooditem/search")
 def searchFoodItem():
     q = request.args.get('q', '')
     fooditem = FoodItem.query.filter_byfirst()
     return jsonify(fooditem)
 
 
-@api.route('/fooditem/add', methods=['PUT'])
+@blueprint.route('/fooditem/add', methods=['PUT'])
 def addFoodItem():
     fooditem = FoodItem()
     unit = Unit.query(Unit.name).filter_by(
@@ -48,6 +48,6 @@ def addFoodItem():
     fooditem.unit = unit
 
 
-@api.route('/fooditem/update', methods=['POST'])
+@blueprint.route('/fooditem/update', methods=['POST'])
 def updateFoodItem():
     pass
