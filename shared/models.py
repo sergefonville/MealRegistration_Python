@@ -17,15 +17,14 @@ class FoodItem(db.Model):
 
     @property
     def unit(self):
-        return Unit.query(Unit.name).\
-            filter_by(id=self.unit_id).\
-            scalar()
+        return self._unit.name
 
     @unit.setter
     def unit(self, value):
-        self.unit_id = Unit.query(Unit.id).\
-            filter_by(name=value).\
-            scalar()
+        unit = Unit.query.filter_by(name=value).first()
+        if unit is None:
+            unit = Unit(name=value)
+        self._unit = unit
 
 
 class MealPart(db.Model):
@@ -39,3 +38,4 @@ class MealPart(db.Model):
 class Unit(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(32), nullable=False)
+    fooditems = db.relationship('FoodItem', backref='_unit', lazy=True)
